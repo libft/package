@@ -8,7 +8,7 @@ fclean: clean
 re: fclean
 	$(MAKE) all
 init:
-	$(MAKE) -k deps_all.mk deps.txt
+	$(MAKE) -f deps_all.mk deps.txt
 test:
 check: all
 install:
