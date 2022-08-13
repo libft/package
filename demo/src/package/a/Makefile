@@ -12,7 +12,8 @@ re: fclean
 init:
 	$(MAKE) -f deps_all.mk deps.txt
 test:
-check: all
-install:
+check:
+install: all
 	cp $(LIBFT_PACKAGE_ROOT)/tmp/a/a.a $(LIBFT_PACKAGE_ROOT)/lib
 	cp a.h $(LIBFT_PACKAGE_ROOT)/usr/include
+	cp a.c $(LIBFT_PACKAGE_ROOT)/usr/src
