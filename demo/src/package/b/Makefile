@@ -1,7 +1,11 @@
-all: $(LIBFT_PACKAGE_ROOT)/tmp/a/b.a
+CFLAGS := -I $(LIBFT_PACKAGE_ROOT)/usr/include
+
+all: $(LIBFT_PACKAGE_ROOT)/tmp/b/b.a
 $(LIBFT_PACKAGE_ROOT)/tmp/b/b.a: $(LIBFT_PACKAGE_ROOT)/tmp/b/b.o
-	$(AR) $(ARFLAGS) $@ $^
+	$(AR) cr $@ $^
 $(LIBFT_PACKAGE_ROOT)/tmp/b/b.o: b.c
+	mkdir -p $(@D)
+	$(CC) -o $@ -c $< $(CFLAGS)
 clean:
 fclean: clean
 	rm -f b.a
@@ -12,5 +16,5 @@ init:
 test:
 check: all
 install:
-	cp $(LIBFT_PACKAGE_ROOT)/tmp/b/b.a $(LIBFT_PACKAGE_ROOT)/usr/lib
+	cp $(LIBFT_PACKAGE_ROOT)/tmp/b/b.a $(LIBFT_PACKAGE_ROOT)/lib
 	cp b.h $(LIBFT_PACKAGE_ROOT)/usr/include
