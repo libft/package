@@ -23,6 +23,22 @@ libft follows the _File Hierarchy Standard_-like structure
     - `cache/` - cache directory for each package
     - `log/` - log directory for each package
     - `lib/` - persistent data for each package
+  - `src/` - directory for current source files
+
+## Files
+
+all source files must located in the project's src directory
+
+there's special reserved names for the libft package system
+
+### Given files
+
+- `src/deps.txt` - list of direct dependency packages
+
+### Generated files
+
+- `src/deps_all.txt` - all recursive dependencies include self
+- ... and more undefined files exclude the src directory
 
 ## Makefile
 
@@ -63,12 +79,14 @@ The package name is an underscore-concatenated list of one or more non-empty str
 
 ### Files to distribute
 
-for ease of use, naming files is restricted to `(package name).{c,h}` or `(package name)_*.{c,h}`
+for ease of use, naming files is restricted to `(package name).{c,h}` or `(package name)__*.{c,h}`, **anything inside another directory is not allowed.**
 
 ```bnf
 <dist-file-name>
-  ::= "(package-name)" <dist-file-name-part> ".c"
-    | "(package-name)" <dist-file-name-part> ".h"
+  ::= "(package-name).c"
+    | "(package-name).h"
+    | "(package-name)_" <dist-file-name-part> ".c"
+    | "(package-name)_" <dist-file-name-part> ".h"
 
 <dist-file-name-part>
   ::= ""
