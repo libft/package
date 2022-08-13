@@ -12,10 +12,11 @@ do
   cp "$LIBFT_PACKAGE_ROOT/boot/deps_all.mk" "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" &&
   sleep 1 &&
   touch "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name/deps.txt" &&
-  make -C "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" -f deps_all.mk deps_all.txt &&
-  make -C "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" test &&
-  make -C "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" check &&
-  make -C "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" install &&
+  (cd "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" && make -f deps_all.mk deps_all.txt) &&
+  (cd "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" && make test) &&
+  (cd "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" && make all) &&
+  (cd "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" && make check) &&
+  (cd "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" && make install) &&
   mv "$LIBFT_PACKAGE_ROOT/sys/tmp_resolve_$name" "$LIBFT_PACKAGE_ROOT/home/$name" &&
   : || echo "failed" && continue
   exit 0

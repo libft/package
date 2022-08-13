@@ -14,7 +14,7 @@ echo '	@echo $$(basename $$(pwd)) | cat - $^ | sort | uniq > $@'
 while IFS= read -r line
 do
   echo "\$(LIBFT_PACKAGE_ROOT)/home/$line/deps_all.txt: \$(LIBFT_PACKAGE_ROOT)/home/$line"
-  echo "	@make -C \$(LIBFT_PACKAGE_ROOT)/home/$line -f deps_all.mk"
+  echo "	@cd \$(LIBFT_PACKAGE_ROOT)/home/$line && make -f deps_all.mk"
   echo "\$(LIBFT_PACKAGE_ROOT)/home/$line:"
   echo "	@sh \$(LIBFT_PACKAGE_ROOT)/boot/resolve_package.sh $line"
 done < "$1"

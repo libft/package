@@ -9,6 +9,7 @@ cp -r ../src/boot src tmp
 cp ../src/boot/deps_all.mk tmp/src
 sleep 1
 touch tmp/src/deps.txt
-make -C tmp -f ../../src/Makefile
-LIBFT_PACKAGE_ROOT=$(cd tmp && pwd) make -C tmp/src check
-LIBFT_PACKAGE_ROOT=$(cd tmp && pwd) make -C tmp/src install
+(cd tmp && make -f ../../src/Makefile)
+(cd tmp && make all)
+(cd tmp && make check)
+(cd tmp && make install)
