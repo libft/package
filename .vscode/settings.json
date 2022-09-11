@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
-    "libft",
     "fclean",
+    "libft",
+    "POSIX"
   ],
   "grammarly.userWords": [
     "libft",
     "fclean",
+    "impl",
   ],
 }

@@ -1,8 +1,8 @@
-# libft package
+# `libft` package
 
-[TOC]
+Rules to organize files in large projects, and management system
 
-## Directories
+## Directory structure
 
 libft follows the _File Hierarchy Standard_-like structure
 
@@ -25,22 +25,18 @@ libft follows the _File Hierarchy Standard_-like structure
     - `lib/` - persistent data for each package
   - `src/` - directory for current source files
 
-## Files
+## Files per package
 
-all source files must located in the project's src directory
+Every libft package consists of three folders and some files below:
 
-there's special reserved names for the libft package system
+- `include/` - header files _to distribute_
+- `share/` - other files like test data
+- `src/` - _all_ source files
+- `bin.properties` - optional, consists of a list of binaries
+- `lib.properties` - optional, consists of a list of libraries
+- `Makefile` - see [Makefile rules](#makefile-rules) below
 
-### Given files
-
-- `src/deps.txt` - list of direct dependency packages
-
-### Generated files
-
-- `src/deps_all.txt` - all recursive dependencies include self
-- ... and more undefined files exclude the src directory
-
-## Makefile
+## Makefile rules
 
 libft package must have Makefile in the project root directory with rules below:
 
@@ -55,7 +51,13 @@ libft package must have Makefile in the project root directory with rules below:
   - `check`: check functionality (e.g. acceptance test)
   - `install`: distribute result files
 
-rules above requires environment variable `LIBFT_PACKAGE_ROOT`
+Rules above requires environment variable `LIBFT_PACKAGE_ROOT`
+
+Makefile must be compliant with POSIX makefile for portability
+
+## Package manifest
+
+WIP
 
 ## Name
 
@@ -79,7 +81,7 @@ The package name is an underscore-concatenated list of one or more non-empty str
 
 ### Files to distribute
 
-for ease of use, naming files is restricted to `(package name).{c,h}` or `(package name)__*.{c,h}`, **anything inside another directory is not allowed.**
+For ease of use, naming files is strictly restricted to `(package name)[_*].{c,h}` or `(directory)/(package name)_(directory name)[_*].{c,h}`, **anything inside another directory is not allowed.**
 
 ```bnf
 <dist-file-name>
@@ -92,3 +94,13 @@ for ease of use, naming files is restricted to `(package name).{c,h}` or `(packa
   ::= ""
     | <dist-file-name-part> "_" <word>
 ```
+
+Example: the allowed file names for `some_name` is:
+
+- `some_name.c`
+- `some_name.h`
+- `some_name_types.h`
+- `impl/some_name_impl.c`
+- `impl/some_name_impl_main.c`
+- `impl/fallback/some_name_impl_fallback.c`
+- `impl/fallback/some_name_impl_fallback_main.c`
