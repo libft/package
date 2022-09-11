@@ -51,7 +51,7 @@ libft package must have Makefile in the project root directory with rules below:
   - `check`: check functionality (e.g. acceptance test)
   - `install`: distribute result files
 
-Rules above requires environment variable `LIBFT_PACKAGE_ROOT`
+The rules above requires the environment variable `LIBFT_PACKAGE_ROOT`
 
 Makefile must be compliant with POSIX makefile for portability
 
