@@ -36,7 +36,38 @@ Every libft package consists of three folders and some files below:
 - `lib.properties` - optional, consists of a list of libraries
 - `Makefile` - see [Makefile rules](#makefile-rules) below
 
-## Makefile rules
+## Makefile rules in package system
+
+All commands are provided as Makefile rules
+
+### `init`
+
+initialize dependencies
+
+- check `sys/log/current/init_*.log` file existence
+- if not exist, run [`make reinit`](#reinit)
+
+### `deinit`
+
+remove all generated files
+
+- move `sys/log/current/init_*.log` to `sys/log/old` if exist
+- remove `sys`, `bin`, `lib`, `tmp`, `usr`, `var` directory
+
+### `reinit`
+
+force re-initialize dependencies
+
+- run [`make deinit`](#deinit)
+- create log file `sys/log/tmp/init.log`
+- create empty file `sys/tmp/init/packages_done.txt`
+- create file `sys/tmp/init/packages_in_progress.txt` as `ls -1 home | sort`
+- loop...
+  - ...
+- remove `sys/tmp/init`
+- move `sys/log/tmp/init.log` to `sys/log/current/init_(timestamp).log`
+
+## Makefile rules for each package
 
 libft package must have Makefile in the project root directory with rules below:
 
