@@ -34,11 +34,11 @@ Every libft package consists of three folders and some files below:
 - `src/` - _all_ source files
 - `bin.properties` - optional, consists of a list of binaries
 - `lib.properties` - optional, consists of a list of libraries
-- `Makefile` - see [Makefile rules](#makefile-rules) below
+- `Makefile` - see [Makefile rules](#makefile-rules-for-each-package) below
 
-## Makefile rules in package system
+## Makefile rules in the package system
 
-All commands are provided as Makefile rules
+All commands provided as Makefile rules
 
 ### `init`
 

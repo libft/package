@@ -16,7 +16,9 @@
   "cSpell.words": [
     "fclean",
     "libft",
-    "POSIX"
+    "POSIX",
+    "deinit",
+    "reinit",
   ],
   "grammarly.userWords": [
     "libft",
