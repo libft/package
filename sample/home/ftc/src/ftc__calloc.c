@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   ftc__calloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:09:12 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wrap_stdlib.h"
+#include "ftc__stdlib.h"
+#include "ftc__string.h"
 
-#include <stdlib.h>
+#include <stddef.h>
 
-void	*wrap_malloc(size_t size)
+#include "ftc__internal_memory.h"
+
+void	*ftc__calloc(size_t count, size_t size)
 {
-	return (malloc(size));
+	const size_t	total_size = count * size;
+	void *const		result = ftc__malloc(total_size);
+
+	if (result)
+		return (ftc__memset(result, 0, total_size));
+	return (NULL);
 }

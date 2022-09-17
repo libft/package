@@ -112,14 +112,14 @@ The package name is an underscore-concatenated list of one or more non-empty str
 
 ### Files to distribute
 
-For ease of use, naming files is strictly restricted to `(package name)[_*].{c,h}` or `(directory)/(package name)_(directory name)[_*].{c,h}`, **anything inside another directory is not allowed.**
+For ease of use, naming files is strictly restricted to `(package name)[_*].{c,h}` or `(directory)/(package name)__(directory name)[_*].{c,h}`, **anything inside another directory is not allowed.**
 
 ```bnf
 <dist-file-name>
   ::= "(package-name).c"
     | "(package-name).h"
-    | "(package-name)_" <dist-file-name-part> ".c"
-    | "(package-name)_" <dist-file-name-part> ".h"
+    | "(package-name)__" <dist-file-name-part> ".c"
+    | "(package-name)__" <dist-file-name-part> ".h"
 
 <dist-file-name-part>
   ::= ""

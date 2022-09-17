@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   ftc__string.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:07:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wrap_stdlib.h"
+#ifndef FTC__STRING_H
+# define FTC__STRING_H
 
-#include <stdlib.h>
+# include <string.h>
 
-void	wrap_free(void *memory)
-{
-	free(memory);
-}
+void	ftc__bzero(void *buffer, size_t length);
+void	*ftc__memset(void *buffer, int c, size_t length);
+void	*ftc__memcpy(void *dest, const void *source, size_t length);
+
+#endif

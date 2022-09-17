@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   wrap__malloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:06:46 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTC_STRING_H
-# define FTC_STRING_H
+#include "wrap__stdlib.h"
 
-# include <string.h>
+#include <stdlib.h>
 
-void	ftc_bzero(void *buffer, size_t length);
-void	*ftc_memset(void *buffer, int c, size_t length);
-void	*ftc_memcpy(void *dest, const void *source, size_t length);
-
-#endif
+void	*wrap__malloc(size_t size)
+{
+	return (malloc(size));
+}

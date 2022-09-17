@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   ftc__stdlib.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:07:27 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wrap_stdlib.h"
+#ifndef FTC__STDLIB_H
+# define FTC__STDLIB_H
 
-#include <stdlib.h>
+# include <stddef.h>
 
-void	wrap_exit(int status)
-{
-	exit(status);
-}
+void	*ftc__malloc(size_t size);
+void	*ftc__calloc(size_t count, size_t size);
+void	*ftc__realloc(void *ptr, size_t size);
+void	ftc__free(void *ptr);
+
+void	ftc__exit(int status);
+int		ftc__atexit(int status);
+
+#endif

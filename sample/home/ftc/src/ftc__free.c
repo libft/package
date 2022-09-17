@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   ftc__free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:09:43 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTC_INTERNAL_MEMORY_H
-# define FTC_INTERNAL_MEMORY_H
+#include "ftc__stdlib.h"
+#include "ftc__string.h"
 
-# include <stddef.h>
+#include <stddef.h>
+#include <stdint.h>
 
-typedef struct s_memory_block {
-	size_t	capacity;
-	size_t	size;
-	char	actual[];
-}	t_memory_block;
+#include "ftc__internal_memory.h"
+#include "wrap__stdlib.h"
 
-#endif
+void	ftc__free(void *ptr)
+{
+	t_memory_block	*old;
+	void			*result;
+
+	if (!ptr)
+		return ;
+	old = (t_memory_block *)((intptr_t)(ptr)
+			- (intptr_t)(&((t_memory_block *) 0)->actual));
+	wrap__free(old);
+}

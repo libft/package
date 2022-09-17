@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fake_file_name (file name is useless too)          :+:      :+:    :+:   */
+/*   wrap_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 42header-remover <whatever@example.com>    +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:00 by VCS handles       #+#    #+#             */
-/*   Updated: 1970/01/01 00:00:00 by file history     ###   ########.fr       */
+/*   Updated: 2022/09/17 13:06:25 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftc_stdlib.h"
+#include "wrap__stdlib.h"
 
-#include <stddef.h>
+#include <stdlib.h>
 
-#include "ftc_internal_memory.h"
-#include "wrap_stdlib.h"
-
-void	*ftc_malloc(size_t size)
+void	wrap__exit(int status)
 {
-	void			*result;
-	t_memory_block	*tmp;
-
-	tmp = (t_memory_block *)wrap_malloc(sizeof(t_memory_block) + size);
-	if (!tmp)
-		return (NULL);
-	tmp->capacity = size;
-	tmp->size = size;
-	result = tmp->actual;
-	return (result);
+	exit(status);
 }
